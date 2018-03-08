@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018. Evodus.com
+  ~ All right reserved
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="evodus_extensions" translate="label" sortOrder="1">
+            <label>Evodus Extensions</label>
+        </tab>
+        <section id="evodus_about" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>About</label>
+            <tab>evodus_extensions</tab>
+            <resource>Evodus_Pixel::config_system</resource>
+            <group id="info" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>About</label>
+                <frontend_model>Evodus\Pixel\Block\Adminhtml\Info</frontend_model>
+            </group>
+        </section>
+        <section id="evodus_pixel" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Facebook Pixel</label>
+            <tab>evodus_extensions</tab>
+            <resource>Evodus_Pixel::config_system</resource>
+            <group id="general" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment>Enables or disables extension.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pixel_id" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook Pixel ID</label>
+                    <comment>Your Facebook Pixel ID.</comment>
+                    <validate>required-entry</validate>
+                    <backend_model>Evodus\Pixel\Model\Config\PixelId</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
